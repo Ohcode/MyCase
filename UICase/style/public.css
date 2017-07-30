@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+*{padding:0;margin:0; border:0;}
+body{background:#FFFFFF; color:#414040;font-size:14px; font-family:"microsoft Yahei","Arial Narrow"; line-height:14px;}
+input{outline: none;}
+ul,ol{list-style-type:none;}
+select,input,img,select{vertical-align:middle;}
+a{ text-decoration:none;outline: none;color: inherit;}
+
+.testBox{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
+.test{
+	display: inline-block;
+	min-width: 200px;
+	min-height: 50px;
+	line-height: 50px;
+	color: #ADD8E6;
+	background: rgba(0,0,0,0.3);
+}

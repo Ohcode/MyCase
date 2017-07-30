@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form</title>
+		<link rel="stylesheet" href="../style/public.css" />
+		<link rel="stylesheet" href="../style/form.css" />
+		<link rel="stylesheet" href="../style/fonts.css" />
+	</head>
+	<body>
+		<form class="form" action="" method="post">
+			<input type="text" name="username" placeholder="用户名"/><br />
+			<input type="password" name="password" placeholder="密码" /><br />
+			<input type="file" name="file" /><br />
+			<input type="checkbox" name="like" value="read" checked=""/><span class="read">阅读</span>
+			<input type="checkbox" name="like" value="sing"/><span class="sing">唱歌</span><br />
+			<input type="radio" name="sex" value="man" checked/><span class="man">男</span>
+			<input type="radio" name="sex" value="women"/><span class="women">女</span><br />
+			<input type="submit" value="提交"/><input type="reset" value="重置" /> <br />
+		</form>
+		<div class="return"></div>
+		<script type="text/javascript" src="../js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="../js/form.js" ></script>
+	</body>
+	<script type="text/javascript">
+		//模拟提交
+		  $(".form").submit(function(e){
+		    e.preventDefault();
+	    	returnHtml = '<p>用户名:'+ $(this).children('input[name=username]').val()
+	    	+'</p><p>密码:'+ $(this).children('input[name=password]').val()
+	    	+'</p><p>文件:'+ $(this).children('input[name=file]').val()
+	    	+'</p><p>爱好:'+ $(this).children('input[name=like]:checked').next().text()
+	    	+'</p><p>性别:'+ $(this).children('input[name=sex]:checked').next().text() + '</p>';
+	    	$(".return").html(returnHtml);
+		  });
+	</script>
+</html>

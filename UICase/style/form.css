@@ -1,0 +1,45 @@
+.form{display: inline-block;padding: .2em;}
+.form input{
+	padding: .2em .5em;
+	border-radius: .3em;
+	border: 1px solid #CCCCCC;
+	margin: .2em;
+}
+.form input[type=text],input[type=password]{
+	width: 100px;
+}
+.form input[type=checkbox],input[type=radio]{
+	cursor: pointer;
+}
+.form input[type=submit],input[type=reset]{
+	background: #CCCCCC;
+	cursor: pointer;
+}
+.form input[type=submit]:hover,input[type=reset]:hover{
+	background: #666666;color: #EEEEEE;border-color: #999999;
+}
+.form .file{
+	border: 1px dashed #CCCCCC;
+	color: #BBBBBB;
+	padding: .2em .5em;
+	font-size: .9em;
+	height: 1.4em;
+	line-height: 1.4em;
+	width: 100px;
+	border-radius:.3em ;
+	overflow: hidden;
+	margin: .2em;
+}
+.form .del-file{
+	color: red;
+	cursor: pointer;
+}
+.form .del-file:hover{
+	color: darkred;
+}
+.form span{
+	font-size: .9em;
+	vertical-align: middle;
+	cursor: pointer;
+	display: inline-block;
+}

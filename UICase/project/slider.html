@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义滚动条</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../style/public.css" />
+		<link rel="stylesheet" href="../style/fonts.css" />
+		<link rel="stylesheet" href="../style/slider.css" />
+	</head>
+	<style type="text/css">
+		p {
+			text-indent: 2em;
+			font-size: 1.2em;
+			line-height: 1.2em;
+			margin: 1em auto;
+			width: 300px;
+		}
+		#outer{position: relative;overflow: hidden;}
+		#inner{position: absolute;left: 0;overflow-x: hidden;overflow-y: scroll;top: 0;}
+		#inner::-webkit-scrollbar {display: none;}
+		#body{float: left;}
+		
+	</style>
+
+	<body>
+		<div id="outer">
+			<div id="inner">
+				<div id="body">
+					<p>
+						<strong>四川诚隆伟业实业有限公司</strong>是一家集金融、房地产、矿产、农业、养殖、酒店、各类工程、能源等为一体的多元化控股公司，由集团投资1.688亿元，依照国家政策法规，经四川省工商行政管理局批准注册成立的的一家专业投资实业公司。
+					</p>
+					<p>
+						自公司成立以来，坚持以良好的信誉、专业的态度，优质的产品和贴心的服务去赢得客户、赢得市场，实现和谐共赢，秉承以人为本，把风险防控和客户的长远利益作为公司的根本利益，作为公司生存与发展的命脉，锐意进取，不断提升企业的核心竞争力，为地方区域经济发展提供更好的服务，为所有投资者都创作一个资本增值的机会，在竞争激烈的市场中，比其它竞争者优越一步，胜人一筹。
+					</p>
+					<p>
+						公司拥有一批专业资深的融投资、项目管理、风险管控等各方面的专业人才，秉承“客户至上、诚信经营、一诺千金、和谐共赢”的经营理念，坚持“审慎经营、风险可控、安全第一、稳健发展”的经营原则，坚持“用专业的人做专业的事，热情、高效”的服务理念，严格执行“合法、合规、科学、严谨、安全、诚信、快捷”的工作流程及“风险控制体系”。依托集团公司的强大实力并加大“产融结合”力度，企业拥有闲置资金和各大银行融资渠道为中小企业解决资金难题。在公司所有部门严谨的把控下选择有实力的企业及拥有优质的项目进行合作。达到双赢的目的。
+					</p>
+					<p>
+						四川诚隆伟业实业有限公司专业从事项目投资、资产管理、企业融资贷款、通过研发创新、市场营销、人才建设等方针，树立“品牌”战略，不断提高企业核心竞争力，力争成为行业领先、国内一流的综合型投资公司。立足上海、江苏、湖南、贵州、云南、四川等，将四川诚隆伟业有限公司建设成具有竞争力和影务咨询。
+					</p>
+					<p>
+						通过科学有效的风控措施和专业化运作体系，精心甄选收益稳健、风险无虞的投资理财项目，让社会上的闲置资金动起来，引导繁荣民间金融，帮助投资者实现无忧理财、资产增值，并推动中国金融市场稳步快速发展。投资分析评估等金融业务，致力于为广大投资者提供资金运转平台和稳定高收益。
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="testBox" style="display: none;">
+			<div class="test"></div>
+		</div>
+		<div class="sliderBox">
+			<div class="sliderMoveBar"></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var winHeight = $(window).height(),
+				docHeight = $('#body').css('height','100%').height(),
+				winWidth = $(window).width(),
+				toTop = 0;
+				setVariable(); 
+			$(window).resize(function() {//窗口变化重新设置参数
+				winHeight = $(window).height();
+				$('.sliderBox').height(winHeight);
+				setVariable();
+				//$('.test').text('滚动条高度：' + winHeight);
+			});
+			$('.sliderBox').hide();
+			if (docHeight > winHeight) {
+				$('#inner').on("scroll",function() {
+					$(this).data({date:Date.parse(new Date())});
+					$('.sliderBox').fadeIn();
+					toTop = $('#inner').scrollTop();
+					$('.test').text('距离上：' + toTop);
+					$('.sliderMoveBar').offset({top:toTop*winHeight / docHeight});
+					if(window.timer > 1){//清除前队列
+						clearInterval(window.timer);
+					}
+					window.timer = setInterval('setSliderBox()',1000);//滚动完成隐藏滚动条
+				});
+			}
+			//$('.testBox').show();
+			//$('.test').text('测试一下，你就知道！');
+		});
+
+		function setVariable() {
+			var docHeight = $('#body').css('height','100%').height(),
+				winHeight = $(window).height(),
+				winWidth = $(window).width();
+			$('.sliderMoveBar').height(winHeight * winHeight / docHeight);
+			$('#outer,#body').height(winHeight).width(winWidth);
+		}
+		
+		function setSliderBox(){
+			if (Date.parse(new Date()) - $('#inner').data('date') > 1000) {
+				$('.sliderBox').fadeOut();
+				clearInterval(window.timer);
+			}
+		}
+	</script>
+
+</html>

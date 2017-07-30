@@ -1,0 +1,22 @@
+.sliderBox{
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 10px;
+	background: none;
+}
+.sliderMoveBar{
+	position: absolute;
+	top: 0;
+	width: 6px;
+	background: wheat;
+	border-radius: 4px;
+}
+@media only screen and (min-width: 1200px){
+	.sliderBox{
+		width: 20px;
+	}
+	.sliderMoveBar{
+		width: 15px;
+	}
+}
